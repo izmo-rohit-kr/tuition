@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achieve Tutor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for hamburger icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFBF7; /* Light background color for the overall page */
+        }
+        /* Custom styles for the hamburger menu transition */
+        .nav-links {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        .nav-links.hidden-mobile {
+            max-height: 0;
+        }
+        .nav-links.visible-mobile {
+            /* Increased max-height to ensure all content is visible */
+            max-height: 300px; /* Adjusted from 200px to provide more space */
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation Bar -->
+        <div class="border-t border-b border-gray-400">
+            <nav class="shadow-sm py-4 px-6 md:px-12 lg:px-24 flex justify-between items-center relative z-10">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=AT" alt="Achieve Tutor Logo" class="h-8 w-8 rounded-full mr-2">
+                    <span class="text-xl font-bold text-gray-800">Achieve Tutor</span>
+                </div>
+
+                <!-- Hamburger menu button for mobile -->
+                <button id="hamburger-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+
+                <!-- Navigation Links (initially flex on desktop, controlled by JS for mobile) -->
+                <!-- Added z-20 to ensure it appears above other content when expanded -->
+                <div id="nav-links" class="nav-links md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-[#FFFBF7] md:bg-transparent shadow-md md:shadow-none py-0 md:py-0 px-6 md:px-0 z-20">
+                    <ul class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-gray-700 font-medium">
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
+                    </ul>
+                    <!-- Enroll Now Button (visible on desktop, moved for mobile) -->
+                    <!-- <button class="mt-4 md:mt-0 ml-0 md:ml-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                        Enroll Now
+                    </button> -->
+                </div>
+            </nav>
+        </div>
+        <!-- Hero Section Content -->
+        <main class="flex-grow container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
+            <!-- Left Content Area -->
+            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Unlock Your <br class="hidden md:block"> Potential: Discover <br class="hidden md:block"> the Difference with <br class="hidden md:block"> Our Exceptional
+                </h1>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                    At our tuition center, we believe in empowering students to reach new heights. Our experienced tutors are dedicated to providing personalized guidance and support.
+                </p>
+                <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                    Get Started
+                </button>
+            </div>
+
+            <!-- Right Image Area -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                    <!-- Image of the girl (square with rounded corners, no shadow) -->
+                    <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Student learning with a book" class="w-full h-auto rounded-lg object-cover relative z-10">
+                </div>
+            </div>
+        </main>
+
+        <!-- Our Tutors Section -->
+        <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row-reverse items-center justify-between">
+            <!-- Right Content Area (for desktop, left for mobile) -->
+            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pl-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Our Tutors
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                    Meet our exceptional team of tutors, each with a proven track record of helping students excel. With their vast experience, innovative teaching methods, and unwavering commitment to student success.
+                </p>
+                <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Explore Now &rarr;</a>
+            </div>
+
+            <!-- Left Image Area -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                    <!-- Image of the boy (square with rounded corners, no shadow) -->
+                    <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Boy student smiling" class="w-full h-auto rounded-lg object-cover relative z-10">
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Why Us Section -->
+        <section class="bg-[#F3FDF5] py-8 md:py-12 text-center">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                <p class="text-gray-500 font-semibold text-lg mb-2"></p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Why Choose Us? 
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                    At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Lecture Card 1 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Personalized Tutoring</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we understand that every student is unique.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"I'm grateful for the opportunity..."</p>
+                    </div>
+
+                    <!-- Lecture Card 2 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Test Preparation</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            Preparing for important exams can be a daunting task.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The individualized attention and tailored..."</p>
+                    </div>
+
+                    <!-- Lecture Card 3 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Student-Centered</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we believe that the key to student success lies in a supportive learning.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The dedicated..."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Achievements Section -->
+        <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
+            <!-- Left Content Area -->
+            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <p class="text-gray-500 font-semibold text-lg mb-2">Student Success Stories</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Student Achievements
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                    At our tuition center, we take immense pride in the achievements of our students. From top academic scores and prestigious awards to impressive college acceptances, our students have consistently demonstrated their ability to excel.
+                </p>
+                <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Learn More &rarr;</a>
+            </div>
+
+            <!-- Right Image Area -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                    <!-- Image of the girl with laptop (square with rounded corners, no shadow) -->
+                    <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Girl with laptop" class="w-full h-auto rounded-lg object-cover relative z-10">
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="bg-[#F3FDF5] py-8 md:py-12">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24 text-center">
+                <p class="text-gray-500 font-semibold text-lg mb-2">Video Lessons</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-8">
+                    Expand Your Knowledge
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                    Explore our comprehensive video lesson library, designed to complement our in-person tuition services.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/Js1Se57fKueKzo9qTJqSin.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 1" class="w-24 h-24 rounded-full object-cover mb-6">
+                        <p class="text-gray-700 text-lg italic mb-4">
+                            "I am amazed by the level of dedication and care the tutors have shown toward my child's learning."
+                        </p>
+                        <p class="font-semibold text-gray-800">- Satisfied Parent</p>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/E4GpsCwtcodH1YNlDc9pNz.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 2" class="w-24 h-24 rounded-full object-cover mb-6">
+                        <p class="text-gray-700 text-lg italic mb-4">
+                            "Sending our child to this tuition center was the best decision we ever made. The support and guidance they provide are truly invaluable."
+                        </p>
+                        <p class="font-semibold text-gray-800">- Happy Family</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lectures Section -->
+        <section class="py-8 md:py-12 text-center">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                <p class="text-gray-500 font-semibold text-lg mb-2">Testimonials</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                    What Our Students
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                    At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Lecture Card 1 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Personalized Tutoring</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we understand that every student is unique.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"I'm grateful for the opportunity..."</p>
+                    </div>
+
+                    <!-- Lecture Card 2 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Test Preparation</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            Preparing for important exams can be a daunting task.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The individualized attention and tailored..."</p>
+                    </div>
+
+                    <!-- Lecture Card 3 -->
+                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Student-Centered</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we believe that the key to student success lies in a supportive learning.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The dedicated..."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section (Top part of the footer image) -->
+        <section class="bg-[#EAF7ED] py-12 md:py-16 text-center">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                <p class="text-gray-700 font-semibold text-lg mb-2">Contact Us</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Get in Touch
+                </h2>
+                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
+                    We would love to hear from you! Whether you have questions about our tuition services, are interested in enrolling your child, or simply want to learn more.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                        Explore Programs
+                    </button>
+                    <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                        Schedule a Consultation
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Footer Section (Bottom part of the footer image) -->
+        <footer class="bg-[#D9EFE0] py-12 md:py-16">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-8">
+                <!-- Logo and Copyright -->
+                <div class="flex flex-col items-center md:items-start mb-8 md:mb-0 md:w-1/4">
+                    <img src="https://placehold.co/60x60/000000/FFFFFF?text=AT" alt="Achieve Tutor Logo" class="h-12 w-12 rounded-full mb-4">
+                    <p class="text-gray-700 text-sm">&copy; 2025 AchieveTutor, Inc.</p>
+                    <p class="text-gray-700 text-sm">All rights reserved.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:w-1/4">
+                    <h4 class="font-bold text-gray-800 text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Explore Our Services -->
+                <div class="md:w-1/4">
+                    <h4 class="font-bold text-gray-800 text-lg mb-4">Explore Our Services</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Tutoring</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Enrichment</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Test Prep</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Partnerships</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect With Us -->
+                <div class="md:w-1/4">
+                    <h4 class="font-bold text-gray-800 text-lg mb-4">Connect With Us</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Facebook</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Twitter</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Instagram</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition duration-300">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const navLinks = document.getElementById('nav-links');
+
+            // Function to set the initial navigation state based on screen size
+            function setInitialNavState() {
+                if (window.innerWidth < 768) {
+                    navLinks.classList.add('hidden-mobile');
+                    navLinks.classList.remove('md:flex'); // Ensure md:flex is not active on mobile
+                } else {
+                    navLinks.classList.remove('hidden-mobile', 'visible-mobile'); // Remove mobile-specific classes
+                    navLinks.classList.add('md:flex'); // Ensure md:flex is active on desktop
+                }
+            }
+
+            setInitialNavState(); // Call on initial load
+
+            // Toggle navigation menu visibility when hamburger button is clicked
+            hamburgerButton.addEventListener('click', () => {
+                navLinks.classList.toggle('hidden-mobile');
+                navLinks.classList.toggle('visible-mobile');
+            });
+
+            // Close the nav menu if a link is clicked (for mobile)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) { // Only for mobile viewports
+                        navLinks.classList.remove('visible-mobile');
+                        navLinks.classList.add('hidden-mobile');
+                    }
+                });
+            });
+
+            // Close the nav menu if clicked outside (for mobile)
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth < 768 && !navLinks.contains(event.target) && !hamburgerButton.contains(event.target)) {
+                    navLinks.classList.remove('visible-mobile');
+                    navLinks.classList.add('hidden-mobile');
+                }
+            });
+
+            // Adjust nav links visibility on window resize
+            window.addEventListener('resize', () => {
+                setInitialNavState(); // Re-evaluate state on resize
+            });
+        });
+    </script>
+</body>
+</html>
