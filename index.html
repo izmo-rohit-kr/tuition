@@ -1,374 +1,521 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Academy's</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for hamburger icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFBF7; /* Light background color for the overall page */
-        }
-        /* Custom styles for the hamburger menu transition */
-        .nav-links {
-            transition: max-height 0.3s ease-out;
-            overflow: hidden;
-        }
-        .nav-links.hidden-mobile {
-            max-height: 0;
-        }
-        .nav-links.visible-mobile {
-            /* Increased max-height to ensure all content is visible */
-            max-height: 300px; /* Adjusted from 200px to provide more space */
-        }
-    </style>
-</head>
-<body>
-    <div class="min-h-screen flex flex-col">
-        <!-- Navigation Bar -->
-        <div class="border-t border-b border-gray-400">
-            <nav class="shadow-sm py-4 px-6 md:px-12 lg:px-24 flex justify-between items-center relative z-10">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="https://placehold.co/40x40/000000/FFFFFF?text=MA" alt="Achieve Tutor Logo" class="h-8 w-8 rounded-full mr-2">
-                    <span class="text-xl font-bold text-gray-800">Marco's Academy's</span><br>
-                    <span class="text-xl text-gray-700">Top Tutorials</span>
-                </div>
-
-                <!-- Hamburger menu button for mobile -->
-                <button id="hamburger-button" class="md:hidden text-gray-700 focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-
-                <!-- Navigation Links (initially flex on desktop, controlled by JS for mobile) -->
-                <!-- Added z-20 to ensure it appears above other content when expanded -->
-                <div id="nav-links" class="nav-links md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-[#FFFBF7] md:bg-transparent shadow-md md:shadow-none py-0 md:py-0 px-6 md:px-0 z-20">
-                    <ul class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-gray-700 font-medium">
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
-                    </ul>
-                    <!-- Enroll Now Button (visible on desktop, moved for mobile) -->
-                    <!-- <button class="mt-4 md:mt-0 ml-0 md:ml-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
-                        Enroll Now
-                    </button> -->
-                </div>
-            </nav>
-        </div>
-        <!-- Hero Section Content -->
-        <main class="flex-grow container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
-            <!-- Left Content Area -->
-            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                    Unlock Your <br class="hidden md:block"> Potential: Discover <br class="hidden md:block"> the Difference with <br class="hidden md:block"> Our Exceptional
-                </h1>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-                    At our tuition center, we believe in empowering students to reach new heights. Our experienced tutors are dedicated to providing personalized guidance and support.
-                </p>
-                <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-0.5">
-                    Get Started
-                </button>
-            </div>
-
-            <!-- Right Image Area -->
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
-                    <!-- Image of the girl (square with rounded corners, no shadow) -->
-                    <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Student learning with a book" class="w-full h-auto rounded-lg object-cover relative z-10">
-                </div>
-            </div>
-        </main>
-
-        <!-- Our Tutors Section -->
-        <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row-reverse items-center justify-between">
-            <!-- Right Content Area (for desktop, left for mobile) -->
-            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pl-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                    Our Tutors
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-                    Meet our exceptional team of tutors, each with a proven track record of helping students excel. With their vast experience, innovative teaching methods, and unwavering commitment to student success.
-                </p>
-                <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Explore Now &rarr;</a>
-            </div>
-
-            <!-- Left Image Area -->
-            <div class="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
-                    <!-- Image of the boy (square with rounded corners, no shadow) -->
-                    <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Boy student smiling" class="w-full h-auto rounded-lg object-cover relative z-10">
-                </div>
-            </div>
-        </section>
-
-        
-        <!-- Why Us Section -->
-        <section class="bg-[#F3FDF5] py-8 md:py-12 text-center">
-            <div class="container mx-auto px-6 md:px-12 lg:px-24">
-                <p class="text-gray-500 font-semibold text-lg mb-2"></p>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                    Why Choose Us? 
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
-                    At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Lecture Card 1 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Personalized Tutoring</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            At our tuition center, we understand that every student is unique.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"I'm grateful for the opportunity..."</p>
-                    </div>
-
-                    <!-- Lecture Card 2 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Test Preparation</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            Preparing for important exams can be a daunting task.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"The individualized attention and tailored..."</p>
-                    </div>
-
-                    <!-- Lecture Card 3 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Student-Centered</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            At our tuition center, we believe that the key to student success lies in a supportive learning.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"The dedicated..."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Student Achievements Section -->
-        <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
-            <!-- Left Content Area -->
-            <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-                <p class="text-gray-500 font-semibold text-lg mb-2">Student Success Stories</p>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                    Student Achievements
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-                    At our tuition center, we take immense pride in the achievements of our students. From top academic scores and prestigious awards to impressive college acceptances, our students have consistently demonstrated their ability to excel.
-                </p>
-                <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Learn More &rarr;</a>
-            </div>
-
-            <!-- Right Image Area -->
-            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
-                    <!-- Image of the girl with laptop (square with rounded corners, no shadow) -->
-                    <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Girl with laptop" class="w-full h-auto rounded-lg object-cover relative z-10">
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Section -->
-        <section class="bg-[#F3FDF5] py-8 md:py-12">
-            <div class="container mx-auto px-6 md:px-12 lg:px-24 text-center">
-                <p class="text-gray-500 font-semibold text-lg mb-2">Video Lessons</p>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-8">
-                    Expand Your Knowledge
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
-                    Explore our comprehensive video lesson library, designed to complement our in-person tuition services.
-                </p>
-
-                <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
-                    <!-- Testimonial Card 1 -->
-                    <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/Js1Se57fKueKzo9qTJqSin.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 1" class="w-24 h-24 rounded-full object-cover mb-6">
-                        <p class="text-gray-700 text-lg italic mb-4">
-                            "I am amazed by the level of dedication and care the tutors have shown toward my child's learning."
-                        </p>
-                        <p class="font-semibold text-gray-800">- Satisfied Parent</p>
-                    </div>
-
-                    <!-- Testimonial Card 2 -->
-                    <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/E4GpsCwtcodH1YNlDc9pNz.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 2" class="w-24 h-24 rounded-full object-cover mb-6">
-                        <p class="text-gray-700 text-lg italic mb-4">
-                            "Sending our child to this tuition center was the best decision we ever made. The support and guidance they provide are truly invaluable."
-                        </p>
-                        <p class="font-semibold text-gray-800">- Happy Family</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lectures Section -->
-        <section class="py-8 md:py-12 text-center">
-            <div class="container mx-auto px-6 md:px-12 lg:px-24">
-                <p class="text-gray-500 font-semibold text-lg mb-2">Testimonials</p>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                    What Our Students Say
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
-                    At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Lecture Card 1 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Personalized Tutoring</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            At our tuition center, we understand that every student is unique.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"I'm grateful for the opportunity..."</p>
-                    </div>
-
-                    <!-- Lecture Card 2 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Test Preparation</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            Preparing for important exams can be a daunting task.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"The individualized attention and tailored..."</p>
-                    </div>
-
-                    <!-- Lecture Card 3 -->
-                    <div class="bg-white py-10 px-6 rounded-lg shadow-md flex flex-col items-center text-center">
-                        <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
-                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Student-Centered</h3>
-                        <p class="text-gray-600 text-base mb-4">
-                            At our tuition center, we believe that the key to student success lies in a supportive learning.
-                        </p>
-                        <p class="text-gray-700 text-sm italic">"The dedicated..."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Us Section (Top part of the footer image) -->
-        <section class="bg-[#EAF7ED] py-12 md:py-16 text-center">
-            <div class="container mx-auto px-6 md:px-12 lg:px-24">
-                <p class="text-gray-700 font-semibold text-lg mb-2">Contact Us</p>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-                    Get in Touch
-                </h2>
-                <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
-                    We would love to hear from you! Whether you have questions about our tuition services, are interested in enrolling your child, or simply want to learn more.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
-                        Explore Programs
-                    </button>
-                    <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
-                        Schedule a Consultation
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Footer Section (Bottom part of the footer image) -->
-        <footer class="bg-[#D9EFE0] py-12 md:py-16">
-            <div class="container mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-8">
-                <!-- Logo and Copyright -->
-                <div class="flex flex-col items-center md:items-start mb-8 md:mb-0 md:w-1/4">
-                    <img src="https://placehold.co/60x60/000000/FFFFFF?text=AT" alt="Achieve Tutor Logo" class="h-12 w-12 rounded-full mb-4">
-                    <p class="text-gray-700 text-sm">&copy; 2025 AchieveTutor, Inc.</p>
-                    <p class="text-gray-700 text-sm">All rights reserved.</p>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="md:w-1/4">
-                    <h4 class="font-bold text-gray-800 text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-700">
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Explore Our Services -->
-                <div class="md:w-1/4">
-                    <h4 class="font-bold text-gray-800 text-lg mb-4">Explore Our Services</h4>
-                    <ul class="space-y-2 text-gray-700">
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Tutoring</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Enrichment</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Test Prep</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Partnerships</a></li>
-                    </ul>
-                </div>
-
-                <!-- Connect With Us -->
-                <div class="md:w-1/4">
-                    <h4 class="font-bold text-gray-800 text-lg mb-4">Connect With Us</h4>
-                    <ul class="space-y-2 text-gray-700">
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Facebook</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Twitter</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">Instagram</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition duration-300">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburgerButton = document.getElementById('hamburger-button');
-            const navLinks = document.getElementById('nav-links');
-
-            // Function to set the initial navigation state based on screen size
-            function setInitialNavState() {
-                if (window.innerWidth < 768) {
-                    navLinks.classList.add('hidden-mobile');
-                    navLinks.classList.remove('md:flex'); // Ensure md:flex is not active on mobile
-                } else {
-                    navLinks.classList.remove('hidden-mobile', 'visible-mobile'); // Remove mobile-specific classes
-                    navLinks.classList.add('md:flex'); // Ensure md:flex is active on desktop
-                }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marcos Academy's</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome for hamburger icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- Inter font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #FFFBF7; /* Light background color for the overall page */
+            }
+            /* Custom styles for the hamburger menu transition */
+            .nav-links {
+                transition: max-height 0.3s ease-out;
+                overflow: hidden;
+            }
+            .nav-links.hidden-mobile {
+                max-height: 0;
+            }
+            .nav-links.visible-mobile {
+                /* Increased max-height to ensure all content is visible */
+                max-height: 300px; /* Adjusted from 200px to provide more space */
             }
 
-            setInitialNavState(); // Call on initial load
+            /* Modal styles */
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            .modal-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .modal-content {
+                background-color: #fff;
+                padding: 2rem;
+                border-radius: 0.75rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                width: 90%;
+                max-width: 500px;
+                position: relative;
+                transform: translateY(-20px);
+                transition: transform 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center content horizontally */
+                text-align: center; /* Center text */
+            }
+            .modal-overlay.active .modal-content {
+                transform: translateY(0);
+            }
+            .close-button {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #333;
+            }
+            .modal-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 0.5rem;
+                margin-bottom: 1rem;
+            }
 
-            // Toggle navigation menu visibility when hamburger button is clicked
-            hamburgerButton.addEventListener('click', () => {
-                navLinks.classList.toggle('hidden-mobile');
-                navLinks.classList.toggle('visible-mobile');
-            });
 
-            // Close the nav menu if a link is clicked (for mobile)
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 768) { // Only for mobile viewports
+        </style>
+    </head>
+    <body>
+        <div class="min-h-screen flex flex-col">
+            <!-- Navigation Bar -->
+            <div class="border-t border-b border-gray-400">
+                <nav class="shadow-sm py-4 px-6 md:px-12 lg:px-24 flex justify-between items-center relative z-10">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/40x40/000000/FFFFFF?text=MA" alt="Marcos Academy's Logo" class="h-8 w-8 rounded-full mr-2">
+                        <div class="font-bold">
+                            <div class="text-xl text-gray-800">Marcos Academy's</div>
+                            <div class="text-md text-gray-700">Top Tutorials</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Hamburger menu button for mobile -->
+                    <button id="hamburger-button" class="md:hidden text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+
+                    <!-- Navigation Links (initially flex on desktop, controlled by JS for mobile) -->
+                    <!-- Added z-20 to ensure it appears above other content when expanded -->
+                    <div id="nav-links" class="nav-links md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-[#FFFBF7] md:bg-transparent shadow-md md:shadow-none py-0 md:py-0 px-6 md:px-0 z-20">
+                        <ul class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-gray-700 font-medium">
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
+                        </ul>
+                        <!-- Enroll Now Button (visible on desktop, moved for mobile) -->
+                        <!-- <button class="mt-4 md:mt-0 ml-0 md:ml-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                            Enroll Now
+                        </button> -->
+                    </div>
+                </nav>
+            </div>
+            <!-- Hero Section Content -->
+            <main class="flex-grow container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
+                <!-- Left Content Area -->
+                <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Unlock Your <br class="hidden md:block"> Potential: Discover <br class="hidden md:block"> the Difference with <br class="hidden md:block"> Our Exceptional
+                    </h1>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                        At our tuition center, we believe in empowering students to reach new heights. Our experienced tutors are dedicated to providing personalized guidance and support.
+                    </p>
+                    <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Right Image Area -->
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                        <!-- Image of the girl (square with rounded corners, no shadow) -->
+                        <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Student learning with a book" class="w-full h-auto rounded-lg object-cover relative z-10">
+                    </div>
+                </div>
+            </main>
+
+            <!-- Our Tutors Section -->
+            <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row-reverse items-center justify-between">
+                <!-- Right Content Area (for desktop, left for mobile) -->
+                <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pl-10">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Our Tutors
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                        Meet our exceptional team of tutors, each with a proven track record of helping students excel. With their vast experience, innovative teaching methods, and unwavering commitment to student success.
+                    </p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Explore Now &rarr;</a>
+                </div>
+
+                <!-- Left Image Area -->
+                <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+                    <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                        <!-- Image of the boy (square with rounded corners, no shadow) -->
+                        <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Boy student smiling" class="w-full h-auto rounded-lg object-cover relative z-10">
+                    </div>
+                </div>
+            </section>
+
+            
+            <!-- Why Us Section -->
+            <section class="bg-[#F3FDF5] py-8 md:py-12 text-center">
+                <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                    <p class="text-gray-500 font-semibold text-lg mb-2"></p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Why Choose Us? 
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                        At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Lecture Card 1 -->
+                        <div class="bg-white py-10 px-10 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://tenneytutors.com/wp-content/uploads/2025/05/student-with-personalized-tutor.jpg" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Personalized Tutoring</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we understand that every student is unique.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"I'm grateful for the opportunity..."</p>
+                    </div>
+
+                    <!-- Lecture Card 2 -->
+                    <div class="bg-white py-10 px-10 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://www.shivamclasses.co.in/wp-content/uploads/2024/09/learning-lab-brentwood-1-1024x690.jpg" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Test Preparation</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            Preparing for important exams can be a daunting task.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The individualized attention and tailored..."</p>
+                    </div>
+
+                    <!-- Lecture Card 3 -->
+                    <div class="bg-white py-10 px-10 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://knowledgeworks.org/wp-content/uploads/2017/03/learner-centered.jpg" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                        <h3 class="font-semibold text-gray-900 text-xl mb-2">Student-Centered</h3>
+                        <p class="text-gray-600 text-base mb-4">
+                            At our tuition center, we believe that the key to student success lies in a supportive learning.
+                        </p>
+                        <p class="text-gray-700 text-sm italic">"The dedicated..."</p>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="bg-white w-full">
+                <section id="achievments" class="container mx-auto px-4 py-8 bg-white w-[100%]">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">My Achievements</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg group achievement-card cursor-pointer" data-title="Achievement One" data-description="Detailed description for Achievement One. This could include more context, specific outcomes, or any other relevant information." data-image="data:image/jpeg;base64,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">
+                            <img src="data:image/jpeg;base64,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" alt="Tissot Watch" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Achievement One</h3>
+                            <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 hover:scale-105 transition duration-300">Read More -></a>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-lg shadow-lg group achievement-card cursor-pointer" data-title="Achievement Two" data-description="Detailed description for Achievement Two. This could include more context, specific outcomes, or any other relevant information." data-image="data:image/jpeg;base64,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">
+                            <img src="data:image/jpeg;base64,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" alt="Seiko Tournament Watch" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Achievement Two</h3>
+                            <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 hover:scale-105 transition duration-300">Read More -></a>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-lg shadow-lg group achievement-card cursor-pointer" data-title="Achievement Three" data-description="Detailed description for Achievement Three. This could include more context, specific outcomes, or any other relevant information." data-image="data:image/jpeg;base64,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">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDRAPDw8PDg0NDg8NDQ0NDQ8NDQ8NFREWFxURFhUYHSggGBolGxUVITEhJSkrLi4uFyAzODMsNyktLisBCgoKDg0OGxAQFy8mICItMC8rLS0tKysvLS4vLzUrLi0tLTItLS0tKzUvKy0tLS4tLS0tLTcvKy0tLS0uLystLf/AABEIAMQBAgMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBAUGB//EAEEQAAICAQIDBAYGBwYHAAAAAAABAgMRBBIFITETQVFhBiJxgZGhFDJSscHRFSNCYnKS8AckM1OCohY0Q3Sy4fH/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAgMEAQUG/8QAKhEBAAICAQMDAgYDAAAAAAAAAAECAxESBCFBIjFRExQyUoGR0fAFI6H/2gAMAwEAAhEDEQA/APLllIJAQshaAtBJFJDIoCJDIoqKGRQFpBqJcUGkBSQaiFGIyMQAUA1AYoBqAClAtQHKBeF5fEBGwmw0KJNgGfaC4mlwBcQMziA4mlwAcQMziC0PlECSAS0A0OaAaAS0C0NkgGAsFhsFgCyggQIQhAEItFIsCwkCg0AUUMigEhsUAUUNigYobFAWkNjEGERl0lCpzacuajGEXhzm2ko57strn7SN7RWNy7Wu50KKWccs+HLJp0undlka443zeIptI5DVsXFWXUxlZLbDTxpq7KUuuxOTUpPzRv4Hdni+jx9SVNkoPdnrjK92OvsM+TqJrWe3dbXFvy91oPQuG3N1spS67a0ox9mXzfyPNem/C46dLsnOK8FOX5n0+p8vceF/tFhmCZ5mbNknU8p912Ksb9njeGyzjPP28zr4OPwzqjrma2SYs1aiS7oJrovgaeG6FOXNZ5dH0E969p1tDH1n7B9e0e0oWpsqOkqk2tsotLrGTfylknEeDTprjblSqljEvqyTfRNfkbKIZlL4fM6XprUv0Y6/tRivPxNmLrbx53DLbFG3i7JJcm+b6Jc38ELTT6Pmuq6Ne4x8ReOVkrIxWztexdkXKck3mTgnJRSXXkl3j6aZ0zinOVtM3txa99lcscsT6uLxjnz5o9GM8z3iO3/dITi8bHKIqSNdsMNrwbQiSNMd1LPJC2h8kKkgFSQtjpIXIBTQLGMBgAymEwWBRCEAQiwUEASCiCg4gMiNihUR0QGRQ2KAih0EAyCGXL1IP7NsPm8L5yRUEOlDMZR6ZWM968/d19xVmj07+O6eOe7DxOi184Qsk8YjPTypjfDLTkv1nLD2rmnkRwWq2rinD3OCqqxOimrerLIxjFPdOS5Zeei6bevM7emluinjD6SXhJcmvjkx8Zey7Q2/Y1kIt+ClCX5Iry4qzSbR8J0vPKIl9hqfQ8f6f15pz4Hq6Zeon5I896awzp5eXM8bLPohpx/ifNeHy5o7G889pbMS951FcVXr3XxPZthP1l7Ts6CWWzzVd3rHd4HLdkptGknZ4ZVusXnOKNPp4/7uo/ae1fcaOCUeun5t/BHP9P55npq/tXRb/hUk38kzRhruIj5mGXLPd4S/hep7ZSxRY4J1xvd19UpV88KyqK2zaTffjm+h0J1NKEW90nNNyxjLWZN47llHTkjF1sb7opwXt/af3L2o929K1rqvvPZmraZnc+O4Lllt+LbETRqmhE0XxGo0qZZoTJGmaETR0JYuQ1i5AKYDGMWwBYLCYLAohCAZ0EgUEgLQyItDIgNiOgJiOgA6I+CExH1gPrRprQmtGmtALpeyxxfSeGv4u74pY9sfMz+lVTeinNfWplXev9E038sm3U6ffHl9dc45ePdnu9vc8PuLoa1NFlU+UpQnVYmsPmnHOO7v96fk3TrXon28fwsmd+p73gupVulrmue6uL+Ri9IY76Jr93PwOL/ZrxBz4dGuX+JQ5UzXepReMHV1962uPjuj8Vn8D57NOvS3Ujvt8hunstkvNmiOp5GX0h9S9+bMUNRyNUU5ViXJtqdO3VqOZ7H0TjuTPnOnvyz6Z6DxzEz56aTrZ7bhdWOfkeU9Lp7+JUQ/yqrLWvatq+cke0pWInz/AFFys1+svbWyvZp4t9FtW6f3xNXS09dY+O7JktvclayzZHPe+Uc9M+Pu6iKKtsfN+PX3+YNGb7HY1iqDcYJ/tST+5Nc/Pl+zz2TR61fVbl+38qZ7Rr92SaM80a7EZrEWoMs0ImjTMzzARIXIZMVIBbFsOQDAFgMJgsCEKIBnQSAQSANBxFoOLAfEdAREfBgPiaKzPA0VgaqzVWjLUa6wNFaM+tolCXb1L14/4kftw8fbhfBLq0jTWaazlo3DsTp5z0f4pHTcSvgninWJamvylLKmvDO9T+R0tfxhO6UU+5SXufP5M8x6ZaFQa1VEsxqlLdGDyotpOS+CTXlnuijzq4y3bCbfLOJex8meP1HS87TaG2mXjDpelv1ty8cnmVqD0XF7FZS/GPL3dzPJvqWdPX0anwjknvt2uHTbaPrPoTZtisnyvgdOWj6Pw+/sKd3R9EZOq/FEQnT8L3uu4hGqiyxvlGDefPB860kZ3qNMW1Ft6jVWJ4e+cs7F5rkvLa33LOzimtlfRGiOW7GlJJ4ym8JZ7s+PcsvuNfCq6o0qNUlNdZTSxuk/2seHLl5JGroabmZlTknXsYq4xioxSjGKUYxXJJLohU0aZmew9ZmZrDNYabDNYBmsM0zRYZpgJkKkMkKmAuQtsKQDAFgstgsCZIUQDOmEhaCTAagoi0w0A6DHwZmiPgwNMDTWzJBmitgba2a6zDUzXWwNtZess21SecJYy+5JtJ58hdbNEeaw+afJp9MeBG0biYdidTtzNPpqIaFxk05zjGeodks2Suwt27Pcuax0S6cj5Xxbh1umlBTi1G6qF9UsNJwks49q6NfmfW/0BpW+cJuCeex7a36P7Oz3bcfu4x5Bek/Aoa/TOt4jbD16LPsWY6P919H8e5FfCfKfKHyOOubrw+uNr/BmBvmM1WnnVZOqyLhZXJwnF9VJf18xcUU8Yqlvb2PotVnDO7xXWrfGpPlHnI89wPUqqpybwksnovQzhj1Fj1ly/VKX6mL/AOpNP638KfxfsMNcE5Msrr3iKw7PCX2drV+2E9kbIKTxthJYjlvv+uvfgLQqqGrshThQnDtHCH1FLPrTS6JNtdOWc+Z0+IcPpv29rDdJJ7ZqUq7Ip/WxOLUkuSyk+4VpNFVRFxqgoJvMnzlOb6Jyk+cn5tnpVwcYise0Ttn5mzZnsY2bM9jNCsmxmWxjrGZrGAixmaxjrGZpsBcmKkw5sTJgDJi2y5MBsCmwWyNlAWQogGZBJgJlpgNTDTFJhpgNix0GZ0xsGBqgzRBmOEjRCQG6uRqrkc+uRqrmB0YP7n+P5GmL/H8TBXb/AFzHwsA3wY2Mv6/r2GKNg2NgGS70fo1eqs1NlNE46OqVVrujZY7JuMZx9SMop7Y5w2/23y5HlNLwWueZRjpFGcnKKelbkovml9fl16cz1Go02onfGui6NcNbN1Xws7dwU+zeLIqqcG3thtacsdH7fK/obUVW2VfSU1p7JV5VVyUsY5/43LuPK6rcXndtNmHvHaHq+Fei1Os4c6lXpe0jLDn2VtMsp55ShZ4cuh09HbF017I9nDbFRrS5QSWNvLwxg4vDuGa7S6Gm2vV1/wB6l2a9TV1zrbjKW9fr5Qk0o98OZ1NPFVwjCLbUVhOTzJ+bx3l/RVmKzO9wqzz3apT5P7s8hUpC5WC5WG5QKcv693/sRayp2CLLAAskZrJBWTM1kwAskZ5MOchE5ADNiZMKTFSYFNgNkbBAhCslZAssHJAMuQkwC8gMTCTFphJgOiw4sRFjIsDTCQ+EjHFjYSA3QkPrmYYTHQmB0YWD4WHNhYOhaB0o2jVac2NoxWgdjhUt2t0kVz/XSk/JRpsefjj4nM1iX0rV+eom/uOp6FR7TWW3fsaSp1J9zusxKXwjGP8AMzyfE+KJavULPJ2yZ4nXz9TJqPDd0/pr3e41ixwjSS7q7qs/6lKC+c0ct2nb0NX0rgjrg/XdOa34Wx9aD/mSPJafVqyEZrluXNPrGXRxfmnle42f4+3+vSjPHqdB2i5WmV3AStN6honaInYJlaKnYAc7DPOZUpiZzAuchM5FSmKlIC5SFSZJSByBCmymwcgXkrJWSZAvJCslAZywSwCTLTALyAxMNSEphKQGhSDjIzKQamBqjMdGwxKYSmB0I2DI2HOVgatA6KtM/EuJqityeHN8oR8ZfkZL9S4xzFZk3GEU+jlKSS+899wv0DhCjdqp6fUTa3N2aGq2Szz2qU23hGfP1EYoWUpycHhHpfpdHw1VVz7TUz3TsaXW2Ty5NnzvUauUrJSb5zk2+fieo4pwiieplHT7IqLw09NTGvPlFE/4X73PTZ/7Gpnl1yY6zNpnvPy2TS09oen9AvS6jT6ZU6ixQazhvpzODreJ0R190arIy098+1rlF+rC1/WXsb5+32i9PwGqE12zrlDPSvTUx+TR9C0XoZorKk4VaVNrrLh+mk/kkMGauO+6z7o5MczXu8U7gXaF6R8Js4fqY1SsjbVep2VSjDstjWM17ctYx0Oc7j2cd4vXlDHaup02OwW7DK7gXYTRaJWCpTEuwFyAZKQDYDkA5gG2C5AORTkAeSsgZJkAskyDkmQCyQHJAEZJkXkmQGZJkVkmQG5LyJyTID9xe8zZJuA1KYSsMm5k3MDYrS905Jqvbu6re3t6mLczZwx5m/4fxOT7Ox7sHEbb1KMZOCksTj2W5d/J+1ND36Q8Scdr1eqcemHdbjHxHalf32rPTs+5td0zsKwwdRmikxE121Y6cvLynb3p5Up7n1ac8sN63U/5lv8ANM9R2hO0KPuY/JH9/RZ9Kfl5Z6vUPrOx+2UzVTx/iMFiGq1UEuijdakvmd/tCpTysD7mv5I/v6H0p+XM4bxK/UWS+lWW6iUFmt3TlY4c8SxufLOV8DTq3taa5J93LqY+G/8AOXfwv/yiaOLvlH2y/A9DH40zX9iu2K7Ux7i9xepau1K7QzbmTIGjeVvEZLyA7cVuF5JkBmSZAyTIB5LyBkgB5IAQDNuJkrJWQCyTIOSZALJMg5JkC8kKyTIFkKyiZQF5Fai2UUnGTjz5uLa5e4C+/a8JZeM5MllrfVt+WORC1vCdY8uhw65yvg5Scn6yzJtvG1nfUzx0LGpKUXhrKXLx/wDppXEbvt/7ImPNgnJMTC+l+L1G8m88v+krvt/7Il/pK/7a/kiU/aW+YT+tD0+8m88x+k7/ALa/kiU+JXfbXP8AcQ+0sfWh0K9aqdTbLG7OY4zjvTz8hmo4irsJQ27W39bdnPuOE7Hucm8uXXkHGeeja9nL8TdX06UT3dTcTJk01jztbz5vqai6J2qmNL3F5BLwdcXkm4rBeAL3F5KIgL3F7iuRfIC9xNxXIvkBe4hXIgGUrAwgC8Mm1jCAK2smxjSAJ2MnZscQDO6peILpl4mogGKWmlnuAlpZ+XxOgQjxh3lLnLST8viX9Gn4L4nQIOMO8pc9aWfgviT6NPwXxOgQcYOUuf8ARp+C+JHpZ+C+J0CDjBylznpJ+C+IVelmvD4m8scYOUskdPLPcMVch5DsRpyZ2Sq34hKDGkOuFqLLwwywAwyBkAHmQIsASyyAVkoIgCyEIBCEIBCEIBCEIBCEIBCEIBCEIBEWQgEIQgEIQgEIQgEIWQCEIQCEIQCFlEAshRALIQgH/9k=" alt="New Arrivals" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Achievement Three</h3>
+                            <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 hover:scale-105 transition duration-300">Read More -></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Student Achievements Section -->
+            <section class="container mx-auto px-6 md:px-12 lg:px-24 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between">
+                <!-- Left Content Area -->
+                <div class="w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <p class="text-gray-500 font-semibold text-lg mb-2">Student Success Stories</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Student Achievements
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+                        At our tuition center, we take immense pride in the achievements of our students. From top academic scores and prestigious awards to impressive college acceptances, our students have consistently demonstrated their ability to excel.
+                    </p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline transition duration-300">Learn More &rarr;</a>
+                </div>
+
+                <!-- Right Image Area -->
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-md md:max-w-lg lg:max-w-xl aspect-square flex justify-center items-center">
+                        <!-- Image of the girl with laptop (square with rounded corners, no shadow) -->
+                        <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Girl with laptop" class="w-full h-auto rounded-lg object-cover relative z-10">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Section -->
+            <section class="bg-[#F3FDF5] py-8 md:py-12">
+                <div class="container mx-auto px-6 md:px-12 lg:px-24 text-center">
+                    <p class="text-gray-500 font-semibold text-lg mb-2">Video Lessons</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-8">
+                        Expand Your Knowledge
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                        Explore our comprehensive video lesson library, designed to complement our in-person tuition services.
+                    </p>
+
+                    <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
+                        <!-- Testimonial Card 1 -->
+                        <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
+                            <!-- <img src="//cdn-imgs.dora.run/design/Js1Se57fKueKzo9qTJqSin.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 1" class=" h-30 rounded-md object-cover mb-6"> -->
+                            <iframe class=" relative rounded-md object-cover mb-6" src="https://www.youtube.com/embed/OtJV9SCyfuE?si=6bL4eG6NRDoHTeb1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <p class="text-gray-700 text-lg italic mb-4">
+                                "I am amazed by the level of dedication and care the tutors have shown toward my child's learning."
+                            </p>
+                            <p class="font-semibold text-gray-800">- Satisfied Parent</p>
+                        </div>
+
+                        <!-- Testimonial Card 2 -->
+                        <div class="bg-white p-8 rounded-lg shadow-md flex-1 max-w-md mx-auto md:mx-0 flex flex-col items-center text-center">
+                            <!-- <img src="//cdn-imgs.dora.run/design/E4GpsCwtcodH1YNlDc9pNz.webp/w/4096/h/4096/format/webp?" alt="Testimonial User 2" class="h-30 rounded-md object-cover mb-6"> -->
+                            <iframe class=" relative rounded-md object-cover mb-6" src="https://www.youtube.com/embed/oX7OduG1YmI?si=6IGI5ure-a6y6XUn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <p class="text-gray-700 text-lg italic mb-4">
+                                "Sending our child to this tuition center was the best decision we ever made. The support and guidance they provide are truly invaluable."
+                            </p>
+                            <p class="font-semibold text-gray-800">- Happy Family</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lectures Section -->
+            <section class="py-8 md:py-12 text-center">
+                <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                    <p class="text-gray-500 font-semibold text-lg mb-2">Testimonials</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                        What Our Students
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                        At our tuition center, we are honored to have earned the trust and appreciation of countless families who have witnessed the transformative impact of our services.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                        <!-- Lecture Card 1 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                            <img src="//cdn-imgs.dora.run/design/HUWV16HfPrYHlS1CqvvrEs.webp/w/4096/h/4096/format/webp?" alt="Personalized Tutoring" class="w-28 h-28 rounded-full object-cover mb-4">
+                            <h3 class="font-semibold text-gray-900 text-xl mb-2">Azman Shaikh</h3>
+                            <p class="text-gray-600 text-base mb-4 italic">
+                                At our tuition center, we understand that every student is unique.
+                            </p>
+                        </div>
+
+                        <!-- Lecture Card 2 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                            <img src="//cdn-imgs.dora.run/design/K6sYsbHMR3rIvxYtVq62m2.webp/w/4096/h/4096/format/webp?" alt="Test Preparation" class="w-28 h-28 rounded-full object-cover mb-4">
+                            <h3 class="font-semibold text-gray-900 text-xl mb-2">Rohit Kumar</h3>
+                            <p class="text-gray-600 text-base mb-4 italic">
+                                Preparing for important exams can be a daunting task.
+                            </p>
+                        </div>
+
+                        <!-- Lecture Card 3 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                            <img src="//cdn-imgs.dora.run/design/JK3zIDEDlRPFzKxi4JuI1A.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                            <h3 class="font-semibold text-gray-900 text-xl mb-2">Sabnam Rajoria</h3>
+                            <p class="text-gray-600 text-base mb-4 italic">
+                                At our tuition center, we believe that the key to student success lies in a supportive learning.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                            <img src="//cdn-imgs.dora.run/design/E4GpsCwtcodH1YNlDc9pNz.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                            <h3 class="font-semibold text-gray-900 text-xl mb-2">Adarsh Yadav</h3>
+                            <p class="text-gray-600 text-base mb-4 italic">
+                                At our tuition center, we believe that the key to student success lies in a supportive learning.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+                            <img src="//cdn-imgs.dora.run/design/Js1Se57fKueKzo9qTJqSin.webp/w/4096/h/4096/format/webp?" alt="Student-Centered" class="w-28 h-28 rounded-full object-cover mb-4">
+                            <h3 class="font-semibold text-gray-900 text-xl mb-2">Lalit Kumar</h3>
+                            <p class="text-gray-600 text-base mb-4 italic">
+                                At our tuition center, we believe that the key to student success lies in a supportive learning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Us Section (Top part of the footer image) -->
+            <section class="bg-[#EAF7ED] py-12 md:py-16 text-center">
+                <div class="container mx-auto px-6 md:px-12 lg:px-24">
+                    <p class="text-gray-700 font-semibold text-lg mb-2">Contact Us</p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Get in Touch
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
+                        We would love to hear from you! Whether you have questions about our tuition services, are interested in enrolling your child, or simply want to learn more.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                            Explore Programs
+                        </button>
+                        <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                            Schedule a Consultation
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <div id="achievement-modal" class="modal-overlay">
+                <div class="modal-content">
+                <span class="close-button" id="close-modal">&times;</span>
+                <img id="modal-image" src="" alt="Achievement Image" class="modal-image">
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4"></h3>
+                <p id="modal-description" class="text-gray-700"></p>
+                </div>
+            </div>
+
+            <!-- Main Footer Section (Bottom part of the footer image) -->
+            <footer class="bg-[#D9EFE0] py-12 md:py-16">
+                <div class="container mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-8">
+                    <!-- Logo and Copyright -->
+                    <div class="flex flex-col items-center md:items-start mb-8 md:mb-0 md:w-1/4">
+                        <img src="https://placehold.co/60x60/000000/FFFFFF?text=MA" alt="Achieve Tutor Logo" class="h-12 w-12 rounded-full mb-4">
+                        <p class="text-gray-700 text-sm">&copy; 2025 Marcos Academy's, Inc.</p>
+                        <p class="text-gray-700 text-sm">All rights reserved.</p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="md:w-1/4">
+                        <h4 class="font-bold text-gray-800 text-lg mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Home</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">About</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Courses</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Explore Our Services -->
+                    <div class="md:w-1/4">
+                        <h4 class="font-bold text-gray-800 text-lg mb-4">Explore Our Services</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Tutoring</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Enrichment</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Test Prep</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Partnerships</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Connect With Us -->
+                    <div class="md:w-1/4">
+                        <h4 class="font-bold text-gray-800 text-lg mb-4">Connect With Us</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Facebook</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Twitter</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">Instagram</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition duration-300">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const navLinks = document.getElementById('nav-links');
+
+                // Function to set the initial navigation state based on screen size
+                function setInitialNavState() {
+                    if (window.innerWidth < 768) {
+                        navLinks.classList.add('hidden-mobile');
+                        navLinks.classList.remove('md:flex'); // Ensure md:flex is not active on mobile
+                    } else {
+                        navLinks.classList.remove('hidden-mobile', 'visible-mobile'); // Remove mobile-specific classes
+                        navLinks.classList.add('md:flex'); // Ensure md:flex is active on desktop
+                    }
+                }
+
+                setInitialNavState(); // Call on initial load
+
+                // Toggle navigation menu visibility when hamburger button is clicked
+                hamburgerButton.addEventListener('click', () => {
+                    navLinks.classList.toggle('hidden-mobile');
+                    navLinks.classList.toggle('visible-mobile');
+                });
+
+                // Close the nav menu if a link is clicked (for mobile)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth < 768) { // Only for mobile viewports
+                            navLinks.classList.remove('visible-mobile');
+                            navLinks.classList.add('hidden-mobile');
+                        }
+                    });
+                });
+
+                // Close the nav menu if clicked outside (for mobile)
+                document.addEventListener('click', (event) => {
+                    if (window.innerWidth < 768 && !navLinks.contains(event.target) && !hamburgerButton.contains(event.target)) {
                         navLinks.classList.remove('visible-mobile');
                         navLinks.classList.add('hidden-mobile');
                     }
                 });
-            });
 
-            // Close the nav menu if clicked outside (for mobile)
-            document.addEventListener('click', (event) => {
-                if (window.innerWidth < 768 && !navLinks.contains(event.target) && !hamburgerButton.contains(event.target)) {
-                    navLinks.classList.remove('visible-mobile');
-                    navLinks.classList.add('hidden-mobile');
-                }
-            });
+                // Adjust nav links visibility on window resize
+                window.addEventListener('resize', () => {
+                    setInitialNavState(); // Re-evaluate state on resize
+                });
+                // Modal functionality for achievements
+                const achievementCards = document.querySelectorAll('.achievement-card');
+                const modal = document.getElementById('achievement-modal');
+                const closeModalButton = document.getElementById('close-modal');
+                const modalTitle = document.getElementById('modal-title');
+                const modalDescription = document.getElementById('modal-description');
+                const modalImage = document.getElementById('modal-image');
 
-            // Adjust nav links visibility on window resize
-            window.addEventListener('resize', () => {
-                setInitialNavState(); // Re-evaluate state on resize
+                achievementCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                    const title = card.getAttribute('data-title');
+                    const description = card.getAttribute('data-description');
+                    const imageUrl = card.getAttribute('data-image');
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    modalImage.src = imageUrl;
+                    modal.classList.add('active');
+                    });
+                });
+
+                closeModalButton.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                    modal.classList.remove('active');
+                    }
+                });
+
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
